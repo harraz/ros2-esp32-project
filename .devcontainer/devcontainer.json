@@ -4,8 +4,8 @@
     "dockerfile": "Dockerfile"
   },
 
-  "workspaceFolder": "/root/ros_ws",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/root/ros_ws,type=bind",
+  // VS Code will automatically mount local folder here
+  "workspaceFolder": "/workspaces/ros2-esp32-project",
 
   "containerName": "ros2-jazzy-dev",
 
@@ -13,10 +13,10 @@
     "--net=host",
     "--pid=host",
     "--hostname", "ros2-dev",
-    "--privileged",                   // ⚡ Hardware access (USB / serial)
+    "--privileged",
     "-e", "DISPLAY=${env:DISPLAY}",
-    "-v", "/tmp/.X11-unix:/tmp/.X11-unix",    // GUI support
-    "-v", "/dev:/dev"                 // Access onboard sensors / ESP
+    "-v", "/tmp/.X11-unix:/tmp/.X11-unix",   // GUI support
+    "-v", "/dev:/dev"                        // USB access
   ],
 
   "customizations": {
@@ -34,7 +34,8 @@
   },
 
   "containerEnv": {
-    "ROS_DOMAIN_ID": "42"   // Multi-device robot network
+    "ROS_DOMAIN_ID": "42"
   },
+
   "postCreateCommand": "bash /root/setup_ros_ws.sh"
 }
