@@ -1,0 +1,40 @@
+{
+  "name": "ROS 2 Jazzy Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "workspaceFolder": "/root/ros_ws",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/root/ros_ws,type=bind",
+
+  "containerName": "ros2-jazzy-dev",
+
+  "runArgs": [
+    "--net=host",
+    "--pid=host",
+    "--hostname", "ros2-dev",
+    "--privileged",                   // ⚡ Hardware access (USB / serial)
+    "-e", "DISPLAY=${env:DISPLAY}",
+    "-v", "/tmp/.X11-unix:/tmp/.X11-unix",    // GUI support
+    "-v", "/dev:/dev"                 // Access onboard sensors / ESP
+  ],
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-iot.vscode-ros2",
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake",
+        "eamodio.gitlens",
+        "platformio.platformio-ide",
+        "ms-python.python"
+      ]
+    }
+  },
+
+  "containerEnv": {
+    "ROS_DOMAIN_ID": "42"   // Multi-device robot network
+  },
+  "postCreateCommand": "bash /root/setup_ros_ws.sh"
+}

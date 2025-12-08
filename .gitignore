@@ -1,0 +1,27 @@
+# ROS2 build artifacts
+**/build/
+**/install/
+**/log/
+
+# Colcon test results
+**/.pytest_cache/
+
+# Python cache
+**/__pycache__/
+**/*.pyc
+
+# PlatformIO / ESP32 build files
+**/.pio/
+**/.pioenvs/
+**/.vscode/.browse.c_cpp.db*
+
+# VS Code settings
+.vscode/
+*.code-workspace
+
+# Temporary files
+*.swp
+*.tmp
+*~
+.DS_Store
+
