@@ -12,6 +12,9 @@ RUN apt-get update && \
     unzip \
     udev \
     usbutils \
+    nano \
+    vim \
+    wget \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Initialize rosdep
