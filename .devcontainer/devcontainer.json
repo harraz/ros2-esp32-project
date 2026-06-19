@@ -28,7 +28,9 @@
         "twxs.cmake",
         "eamodio.gitlens",
         "platformio.platformio-ide",
-        "ms-python.python"
+        "ms-python.python",
+        "openai.chatgpt",
+        "MermaidChart.vscode-mermaid-chart"
       ]
     }
   },
